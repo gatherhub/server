@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "bundle": "browserify public/scripts/client.js -o public/scripts/main.js",
+    "start": "npm run bundle && node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
