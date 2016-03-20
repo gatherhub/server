@@ -11,7 +11,7 @@ var credential = md5(JSON.stringify({hub: hub, name: name, email: email, secret:
 // var peer = new proto.peer({credential: credential, hub: hub, name: name, secret: Date.now().toString(), contact: {email: email}});
 var peer = new proto.peer({credential: credential, hub: hub, name: name, secret: secret, contact: {email: email}});
 
-var ws = new WebSocket('wss://localhost:55688');
+var ws = new WebSocket('wss://54.169.14.163:55688');
 var send = function() {};
 
 ws.onopen = function(e) {
