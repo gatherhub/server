@@ -56,5 +56,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+require('msgsrouter')
 
 module.exports = app;
