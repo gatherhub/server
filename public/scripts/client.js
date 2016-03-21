@@ -1,4 +1,5 @@
-var proto = require('msgsrouter/proto');
+var base = require('msgsrouter/base');
+var config = require('msgsrouter/config');
 var md5 = require('crypto-js/md5');
 
 var offset = 0;
@@ -8,17 +9,16 @@ var email = 'quarkli@gmail.com';
 var secret = md5(Date.now().toString()).toString();
 var credential = md5(JSON.stringify({hub: hub, name: name, email: email, secret: secret})).toString();
 
-// var peer = new proto.peer({credential: credential, hub: hub, name: name, secret: Date.now().toString(), contact: {email: email}});
-var peer = new proto.peer({credential: credential, hub: hub, name: name, secret: secret, contact: {email: email}});
+var peer = new base.peer({credential: credential, hub: hub, name: name, secret: secret, contact: {email: email}});
 
-var ws = new WebSocket('wss://54.169.14.163:55688');
+var ws = new WebSocket(config.wsurl);
 var send = function() {};
 
 ws.onopen = function(e) {
 	console.log('connection opened');
 
 	window.send = send = function(subject, content, to) {
-		var msg = new proto.message(peer);
+		var msg = new base.message(peer);
 		msg.subject = subject;	
 		msg.content = content;
 		msg.to = to || [];
@@ -36,7 +36,7 @@ ws.onmessage = function(msg) {
 
     // filter incorrect message, only accept message data in JSON
     try {
-        message = new proto.message(JSON.parse(msg.data));
+        message = new base.message(JSON.parse(msg.data));
     }
     catch (e) {
         return;
