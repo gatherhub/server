@@ -1,5 +1,5 @@
+var uri = require('./uri');
 var base = require('msgsrouter/base');
-var config = require('msgsrouter/config');
 var md5 = require('crypto-js/md5');
 
 var offset = 0;
@@ -11,7 +11,7 @@ var credential = md5(JSON.stringify({hub: hub, name: name, email: email, secret:
 
 var peer = new base.peer({credential: credential, hub: hub, name: name, secret: secret, contact: {email: email}});
 
-var ws = new WebSocket(config.wsurl);
+var ws = new WebSocket(uri);
 var send = function() {};
 
 ws.onopen = function(e) {
@@ -25,6 +25,8 @@ ws.onopen = function(e) {
 		msg.timestamp -= offset;
 		ws.send(msg.toString());
 	};
+
+	send('hi', peer);
 };
 
 ws.onclose = function(e) {

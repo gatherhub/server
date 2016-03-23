@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "bundle": "browserify public/scripts/client.js -o public/scripts/main.js",
+    "build": "node build.js",
+    "bundle": "npm run build && browserify public/scripts/client.js -o public/scripts/main.js",
     "start": "npm run bundle && node ./bin/www"
   },
   "dependencies": {
@@ -13,6 +14,7 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "msgsrouter": "^1.0.10",
     "serve-favicon": "~2.3.0"
   }
 }
