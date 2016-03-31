@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Gatherhub</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/ghub-logo-c.png">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
+</head>
+<body>
+    <div class="layer container" id="layer0" align="center">
+        <div id="login">
+            <img id="logo" src="images/ghub-logo-c.png" alt="Getherhub Logo">
+            <h1 id='lbl-gatherhub'>GATHERHUB</h1>
+            <h2 class="center" id='lbl-signin'>Sign in</h2>
+            <div class="form-group" align="left">
+                <label for="name" id='lbl-name'>Name</label>
+                <input type="text" class="form-control underline" id="name" placeholder="(User Name)" autocomplete="off">
+            </div>
+            <div class="form-group" align="left">
+                <label for="contact" id='lbl-contact'>E-mail or Phone</label>
+                <input type="text" class="form-control underline" id="contact" placeholder="(Email or Phone)" autocomplete="off">
+            </div>
+            <div class="form-group" align="left">
+                <label for="secret" id='lbl-secret'>Secret (At least 6 characters)</label>
+                <input type="password" class="form-control underline" id="secret" placeholder="(A secret phrase)" autocomplete="off">
+            </div>
+            <div class="form-group" align="right">
+            	<div class="col-sm-8"></div>
+            	<div class="col-sm-4" align="left">
+	                <input type="checkbox" id="remember"> <label id='lbl-remember'>Remember me</label>
+            	</div>
+            </div>
+            <div class="form-group" align="right">
+            	<div class="col-sm-8"></div>
+            	<div class="col-sm-4" align="left">
+	                <input type="checkbox" id="autologin"> <label id='lbl-autosignin'>Auto-Signin</label>
+            	</div>
+            </div>
+            <div class="form-group" align="right">
+            	<div class="col-sm-8"></div>
+            	<div class="col-sm-4" align="left">
+	                <input type="checkbox" id="hidden"> <label id='lbl-hidden'>Hidden</label>
+            	</div>
+            </div>
+            <div class="form-group center">
+                <button type="button" class="btn btn-primary" id="enter"><label id='lbl-enter'>Enter</label></button>
+            </div>
+        </div>
+        <div class="container" id="footer">
+        	<p><label id='lbl-developby'>Developped by</label></p>
+        	<p><label id='lbl-company'>Connective Dynamics Workshop</label></p>
+        	<a href="mailto:quarkli@gmail.com"><label id='lbl-contactus'>Contact Us</label></a>
+        </div>
+    </div>
+    <div class="layer container" id="layer1"></div>
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="css/default.css">
+</body>
+</html>
