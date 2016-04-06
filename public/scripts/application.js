@@ -102,11 +102,12 @@ function showDiv(flag) {
 	}
 }
 
-function loadParts(parts, parent) {
+function loadParts(parts, parent, next) {
 	$.get('/parts/' + parts + '/index.html').then(function(data) {
 		try {
 			var parts = $(data);
 			if (parts.length) $(parent).append(parts);
+			next();
 		}
 		catch (e) {
 			console.trace(e);
@@ -118,6 +119,12 @@ function unloadParts(parts) {
 	$('#' + parts).remove();
 }
 
+loadParts('mainpage', '#layer1');
+loadParts('mainmenu', '#bottomrow', () => {
+	mainmenu.setTask(mainmenu.items[3], ()=>{logout();});
+});
+$('#layer0').show();
+$('#layer1').hide();
 init();
 
 function init() {
@@ -198,9 +205,6 @@ function login() {
     // hide login screen and show communicator screen
     $('#layer0').hide();
     $('#layer1').show();
-
-	loadParts('mainpage', '#layer1');
-	loadParts('mainmenu', '#bottomrow');
 }
 
 function setCookie(key, value) {
