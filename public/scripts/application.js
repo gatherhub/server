@@ -32,6 +32,7 @@ $.get('/label/' + lang, function(e){
 	}
 });
 
+$('#logo').attr('src', 'images/ghub-logo-c.png');
 
 var msrc = require('msgsrouter/client');
 msrc.server = require('./uri');
@@ -84,10 +85,38 @@ var pub = {
 	send: msrc.send,
 	logout: logout,
 	getCookie: getCookie,
-	setCookie: setCookie
+	setCookie: setCookie,
+	showDiv: showDiv,
+	loadParts: loadParts,
+	unloadParts: unloadParts
 };
 
 Object.keys(pub).forEach(function(k) { window[k] = pub[k]; });
+
+function showDiv(flag) {
+	if (flag) {
+		$('div').css({'border-style': 'dotted', 'border-width': '1px'});
+	}
+	else {
+		$('div').css({'border-style': '', 'border-width': ''});
+	}
+}
+
+function loadParts(parts, parent) {
+	$.get('/parts/' + parts + '/index.html').then(function(data) {
+		try {
+			var parts = $(data);
+			if (parts.length) $(parent).append(parts);
+		}
+		catch (e) {
+			console.trace(e);
+		}
+	});
+}
+
+function unloadParts(parts) {
+	$('#' + parts).remove();
+}
 
 init();
 
@@ -111,6 +140,9 @@ function init() {
     $('#name').on('keyup', keyupHandle);
     $('#contact').on('keyup', keyupHandle);
     $('#secret').on('keyup', keyupHandle);
+    $('#remember').on('keyup', keyupHandle);
+    $('#autologin').on('keyup', keyupHandle);
+    $('#hidden').on('keyup', keyupHandle);
 
     if ($('#name').val().length == 0) {
 	   	$('#name').focus().select();
@@ -160,12 +192,15 @@ function login() {
     msrc.sessid = getCookie('sessid') || 0;
     msrc.hidden = getCookie('hidden') == 'true';
 
+    // connect to MSR
+    msrc.connect();
+
     // hide login screen and show communicator screen
     $('#layer0').hide();
     $('#layer1').show();
-  
-    // connect to MSR
-    msrc.connect();
+
+	loadParts('mainpage', '#layer1');
+	loadParts('mainmenu', '#bottomrow');
 }
 
 function setCookie(key, value) {
