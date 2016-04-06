@@ -1,1 +1,0 @@
-module.exports = "ws://localhost:55688";
