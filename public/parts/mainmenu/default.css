@@ -1,0 +1,39 @@
+.menu {
+	margin: auto;
+	min-width: 240px;
+	max-width: 480px;
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+}
+
+.mi-block {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.mi-block:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.mi-label {
+	color: white;
+	font: 12px sans-serif;
+	cursor: pointer;
+	padding: 2px;
+}
+.mi-icon {
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+.mi-selected {
+	fill: yellow;
+	color: yellow;
+}
+
+.mi-default {
+	fill: white;
+	color: white;
+}
