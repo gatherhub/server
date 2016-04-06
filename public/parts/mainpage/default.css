@@ -1,0 +1,33 @@
+#toprow {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 40px;
+	overflow: hidden;
+	margin: auto;
+}
+
+#bodyrow {
+	position: fixed;
+	top: 40px;
+	left: 0px;
+	right: 0px;
+	bottom: 64px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: auto;
+}
+
+#bottomrow {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 64px;
+	overflow: hidden;
+	margin: auto;
+}
