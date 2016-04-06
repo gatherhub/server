@@ -2,3 +2,4 @@
 *.crt
 *.key
 node_modules/*
+/run.sh
